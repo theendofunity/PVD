@@ -10,7 +10,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pvd
 TEMPLATE = app
-
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -24,15 +23,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+LIBS += -lamqpcpp #RabbitMQC
+
 SOURCES += \
-        RabbitMQClient.cpp \
-        main.cpp \
-        MainWindow.cpp
+        src/MainWindow.cpp \
+        src/RabbitMQClient.cpp \
+        src/main.cpp
 
 HEADERS += \
-        MainWindow.h \
-        RabbitMQClient.h \
-        libs/amqpcpp.h
+        libs/amqpcpp.h \
+        src/MainWindow.h \
+        src/RabbitMQClient.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
