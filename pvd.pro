@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,17 +23,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-LIBS += -lamqpcpp #RabbitMQC
+#LIBS += -lamqpcpp #RabbitMQC
 
 SOURCES += \
         src/MainWindow.cpp \
         src/RabbitMQClient.cpp \
-        src/main.cpp
+        src/main.cpp \
+        src/TcpClient.cpp
 
 HEADERS += \
         libs/amqpcpp.h \
         src/MainWindow.h \
-        src/RabbitMQClient.h
+        src/RabbitMQClient.h \
+        src/TcpClient.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
