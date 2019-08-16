@@ -2,6 +2,7 @@
 #include <QApplication>
 
 #include "RabbitMQClient.h"
+#include "TcpClient.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,8 +10,10 @@ int main(int argc, char *argv[])
 
 
 
+    TcpClient *client = new TcpClient;
+
     MainWindow w;
-    w.show();
+//    w.show();
 
     return a.exec();
 }
