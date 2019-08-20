@@ -24,6 +24,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 #LIBS += -lamqpcpp #RabbitMQC
+INCLUDEPATH += $${PROJECT_ROOT}/src
+INCLUDEPATH += $${PROJECT_ROOT}/libs/
+INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
         src/MainWindow.cpp \
@@ -32,6 +35,8 @@ SOURCES += \
         src/TcpClient.cpp
 
 HEADERS += \
+        libs/AtcrbsCoordinatePoint.h \
+        libs/Answer.h \
         libs/amqpcpp.h \
         src/MainWindow.h \
         src/RabbitMQClient.h \

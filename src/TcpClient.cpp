@@ -3,6 +3,8 @@
 #include <QDebug>
 #include <QDataStream>
 #include <QHostAddress>
+#include <libs/GenericPrototypes/BitStream.h>
+#include <libs/AtcrbsCoordinatePoint.h>
 
 TcpClient::TcpClient(QObject *parent)
     : QObject (parent)
@@ -25,14 +27,20 @@ void TcpClient::onConnection()
 
 void TcpClient::onMessage()
 {
-    QDataStream stream(m_socket);
+    auto data = m_socket->readAll();
 
-    uint16_t nextblock = 0;
-    while (m_socket->bytesAvailable())
-    {
-        stream >> nextblock;
-    }
-    qDebug() << nextblock;
+    std::vector<uint8_t> m_buffer;
+
+    auto convertedData = static_cast<const uint8_t*>(static_cast<const void *>(data.data()));
+
+    m_buffer.insert(m_buffer.end(), convertedData, convertedData + data.size());
+
+    BitStream stream(m_buffer);
+
+    pdp::AtcrbsCoordinatePoint cp;
+    stream >> cp;
+
+    qDebug() << cp.bortNumber;
 }
 
 void TcpClient::socketError()

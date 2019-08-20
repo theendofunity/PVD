@@ -18,7 +18,7 @@ public:
     void socketError();
 private:
     QTcpSocket *m_socket = nullptr;
-    const uint16_t port = 10700;
+    const uint16_t port = 10800;
     QString host = "127.0.0.1";
 };
 
