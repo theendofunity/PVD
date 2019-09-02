@@ -30,16 +30,15 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
         src/MainWindow.cpp \
-        src/RabbitMQClient.cpp \
         src/main.cpp \
         src/TcpClient.cpp
 
 HEADERS += \
         libs/AtcrbsCoordinatePoint.h \
         libs/Answer.h \
-        libs/amqpcpp.h \
+        libs/POIProtocol.h  \
+        libs/PeriodRepetitionAzimuth.h  \
         src/MainWindow.h \
-        src/RabbitMQClient.h \
         src/TcpClient.h
 
 # Default rules for deployment.

@@ -1,7 +1,6 @@
 #include "MainWindow.h"
 #include <QApplication>
 
-#include "RabbitMQClient.h"
 #include "TcpClient.h"
 
 int main(int argc, char *argv[])
