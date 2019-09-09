@@ -24,16 +24,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 #LIBS += -lamqpcpp #RabbitMQC
+
 INCLUDEPATH += $${PROJECT_ROOT}/src
+INCLUDEPATH += $${PROJECT_ROOT}/src/Distributors
 INCLUDEPATH += $${PROJECT_ROOT}/libs/
 INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
+        src/Distributors/AzimuthDistributor.cpp \
+        src/Distributors/CoordinatePointDistributor.cpp \
         src/MainWindow.cpp \
         src/main.cpp \
         src/TcpClient.cpp
 
 HEADERS += \
+        src/Distributors/AzimuthConsumer.h \
+        src/Distributors/AzimuthDistributor.h \
+        src/Distributors/CoordinatePointConsumer.h \
+        src/Distributors/CoordinatePointDistributor.h \
+        src/Distributors/IDistributor.h \
         libs/AtcrbsCoordinatePoint.h \
         libs/Answer.h \
         libs/POIProtocol.h  \

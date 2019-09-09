@@ -40,7 +40,7 @@ public:
         return *this;
     }
 
-    T& operator [](uint index)
+    T& operator [](size_t index)
     {
         if (this->size() <= index)
             this->resize(index + 1);
