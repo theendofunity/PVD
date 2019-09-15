@@ -14,6 +14,6 @@ void AzimuthDistributor::notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAz
 {
     for (auto &consumer : consumers)
     {
-        consumer->handle(message);
+        consumer->setAzimuth(message);
     }
 }

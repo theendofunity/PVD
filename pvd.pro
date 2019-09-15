@@ -31,13 +31,18 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/
 INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
+        libs/Azimuth.cpp \
+        src/CoordinatePoint.cpp \
         src/Distributors/AzimuthDistributor.cpp \
         src/Distributors/CoordinatePointDistributor.cpp \
         src/MainWindow.cpp \
+        src/PointContainer.cpp \
         src/main.cpp \
         src/TcpClient.cpp
 
 HEADERS += \
+        libs/Azimuth.h \
+        src/CoordinatePoint.h \
         src/Distributors/AzimuthConsumer.h \
         src/Distributors/AzimuthDistributor.h \
         src/Distributors/CoordinatePointConsumer.h \
@@ -47,7 +52,9 @@ HEADERS += \
         libs/Answer.h \
         libs/POIProtocol.h  \
         libs/PeriodRepetitionAzimuth.h  \
+        src/IItem.h \
         src/MainWindow.h \
+        src/PointContainer.h \
         src/TcpClient.h
 
 # Default rules for deployment.

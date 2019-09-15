@@ -7,9 +7,9 @@
 class CoordinatePointConsumer
 {
 public:
-//    virtual ~CoordinatePointConsumer();
+    virtual ~CoordinatePointConsumer() = default;
 
-    virtual void handle(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message) = 0;
+    virtual void addCp(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message) = 0;
 };
 
 #endif // COORDINATEPOINTCONSUMER_H

@@ -10,9 +10,9 @@
 class AzimuthConsumer
 {
 public:
-    virtual ~AzimuthConsumer();
+    virtual ~AzimuthConsumer() = default;
 
-    virtual void handle(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message) = 0;
+    virtual void setAzimuth(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message) = 0;
 };
 
 #endif // AZIMUTHCONSUMER_H

@@ -15,6 +15,6 @@ void CoordinatePointDistributor::notifyConsumers(std::shared_ptr<pdp::AtcrbsCoor
 {
     for(auto &consumer : consumers)
     {
-        consumer->handle(message);
+        consumer->addCp(message);
     }
 }
