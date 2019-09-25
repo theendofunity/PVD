@@ -14,7 +14,7 @@ public:
     CoordinatePointDistributor();
 
     void addConsumer(CoordinatePointConsumer* consumer);
-    void notifyConsumers(std::shared_ptr<pdp::AtcrbsCoordinatePoint>& message);
+    void notifyConsumers(std::shared_ptr<pdp::AtcrbsCoordinatePoint> message);
 
 private:
     QList<CoordinatePointConsumer*> consumers;

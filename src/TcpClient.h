@@ -6,7 +6,12 @@
 
 #include <QtNetwork/QTcpSocket>
 
+#include "Distributors/AzimuthDistributor.h"
+#include "Distributors/CoordinatePointDistributor.h"
+
 class TcpClient : public QObject
+                , public AzimuthDistributor
+                , public CoordinatePointDistributor
 {
     Q_OBJECT
 
@@ -19,7 +24,7 @@ public:
 private:
     QTcpSocket *m_socket = nullptr;
     const uint16_t port = 10800;
-    QString host = "127.0.0.1";
+    QString host = "192.168.0.100";
 };
 
 #endif // TCPCLIENT_H

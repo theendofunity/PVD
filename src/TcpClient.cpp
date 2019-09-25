@@ -8,6 +8,8 @@
 #include <libs/PeriodRepetitionAzimuth.h>
 #include <libs/POIProtocol.h>
 
+#include <memory>
+
 TcpClient::TcpClient(QObject *parent)
     : QObject (parent)
 {
@@ -15,7 +17,7 @@ TcpClient::TcpClient(QObject *parent)
 
     m_socket = new QTcpSocket(this);
 
-    m_socket->connectToHost(QHostAddress(host), port);
+    m_socket->connectToHost(host, port);
 
     connect(m_socket, &QTcpSocket::connected, this, &TcpClient::onConnection);
     connect(m_socket, &QTcpSocket::readyRead, this, &TcpClient::onMessage);
@@ -41,20 +43,20 @@ void TcpClient::onMessage()
 
     PVD::Header header;
     stream >> header;
-    qDebug() << "Type" << header.type;
+//    qDebug() << "Type" << header.type;
 
     if (header.type == 25)
     {
         dsp::PeriodRepetitionAzimuth az;
         stream >> az;
-        qDebug() << "AZIMUTH" << az.azimuth;
+        AzimuthDistributor::notifyConsumers(std::make_shared<dsp::PeriodRepetitionAzimuth>(az));
     }
 
     if (header.type == 91)
     {
         pdp::AtcrbsCoordinatePoint cp;
         stream >> cp;
-        qDebug() << "CP" << cp.bortNumber;
+        CoordinatePointDistributor::notifyConsumers(std::make_shared<pdp::AtcrbsCoordinatePoint>(cp));
     }
 }
 

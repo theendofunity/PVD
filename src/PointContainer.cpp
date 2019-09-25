@@ -3,6 +3,8 @@
 #include "libs/Azimuth.h"
 #include "CoordinatePoint.h"
 
+#include <QDebug>
+
 //-----------------------------------------------------------------------
 
 static uint8_t currentSector(Azimuth &azimuth)
@@ -27,13 +29,16 @@ void PointContainer::addCp(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message)
     auto pointAzimuth = Azimuth::fromRadians(message->azimuth);
 
     points[currentSector(pointAzimuth)].push_back(cp);
+
+//    qDebug() << message->azimuth << pointAzimuth.toDegrees() << currentSector(pointAzimuth);
 }
 
 void PointContainer::setAzimuth(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message)
 {
-    auto azimuth = Azimuth::fromRadians(message->azimuth);
+    auto azimuth = Azimuth::fromDegrees(message->azimuth.value());
     auto nextAzimuth = nextSector(azimuth);
 
+//    qDebug() <<  "NextAzimuth: " << nextAzimuth;
     removeOldItems(nextAzimuth);
 }
 

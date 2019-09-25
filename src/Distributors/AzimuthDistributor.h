@@ -18,7 +18,7 @@ public:
     //Добавление потребителя
     void addConsumer(AzimuthConsumer *consumer);
     //Уведомление потребителя
-    void notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message);
+    void notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAzimuth> message);
 
 private:
     QList <AzimuthConsumer*> consumers;

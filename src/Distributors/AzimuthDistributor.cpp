@@ -10,7 +10,7 @@ void AzimuthDistributor::addConsumer(AzimuthConsumer *consumer)
     consumers.push_back(consumer);
 }
 
-void AzimuthDistributor::notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message)
+void AzimuthDistributor::notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAzimuth> message)
 {
     for (auto &consumer : consumers)
     {
