@@ -23,8 +23,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-#LIBS += -lamqpcpp #RabbitMQC
-
 INCLUDEPATH += $${PROJECT_ROOT}/src
 INCLUDEPATH += $${PROJECT_ROOT}/src/Distributors
 INCLUDEPATH += $${PROJECT_ROOT}/libs/
@@ -32,16 +30,19 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
         libs/Azimuth.cpp \
+        src/Canvas.cpp \
         src/CoordinatePoint.cpp \
         src/Distributors/AzimuthDistributor.cpp \
         src/Distributors/CoordinatePointDistributor.cpp \
         src/MainWindow.cpp \
+        src/PVDSystem.cpp \
         src/PointContainer.cpp \
         src/main.cpp \
         src/TcpClient.cpp
 
 HEADERS += \
         libs/Azimuth.h \
+        src/Canvas.h \
         src/CoordinatePoint.h \
         src/Distributors/AzimuthConsumer.h \
         src/Distributors/AzimuthDistributor.h \
@@ -54,6 +55,7 @@ HEADERS += \
         libs/PeriodRepetitionAzimuth.h  \
         src/IItem.h \
         src/MainWindow.h \
+        src/PVDSystem.h \
         src/PointContainer.h \
         src/TcpClient.h
 
