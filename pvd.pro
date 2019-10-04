@@ -21,7 +21,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
+CONFIG += c++14
 
 INCLUDEPATH += $${PROJECT_ROOT}/src
 INCLUDEPATH += $${PROJECT_ROOT}/src/Distributors
@@ -29,11 +29,14 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/
 INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
+        Layer.cpp \
         libs/Azimuth.cpp \
         src/Canvas.cpp \
         src/CoordinatePoint.cpp \
         src/Distributors/AzimuthDistributor.cpp \
         src/Distributors/CoordinatePointDistributor.cpp \
+        src/GridLayer.cpp \
+        src/LayersManager.cpp \
         src/MainWindow.cpp \
         src/PVDSystem.cpp \
         src/PointContainer.cpp \
@@ -41,6 +44,7 @@ SOURCES += \
         src/TcpClient.cpp
 
 HEADERS += \
+        Layer.h \
         libs/Azimuth.h \
         src/Canvas.h \
         src/CoordinatePoint.h \
@@ -53,7 +57,10 @@ HEADERS += \
         libs/Answer.h \
         libs/POIProtocol.h  \
         libs/PeriodRepetitionAzimuth.h  \
+        src/GridLayer.h \
         src/IItem.h \
+        src/ILayer.h \
+        src/LayersManager.h \
         src/MainWindow.h \
         src/PVDSystem.h \
         src/PointContainer.h \

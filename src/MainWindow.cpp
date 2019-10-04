@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
     pvd = new PVDSystem;
 
     createMainWindow();
+
+    showMaximized();
 }
 
 MainWindow::~MainWindow()
