@@ -14,6 +14,7 @@ public:
 
     virtual void setScale() = 0;
     virtual void setSize(QSize size) = 0;
+    virtual void setOrigin(QPointF origin) = 0;
     virtual QPixmap& pixmap() = 0;
 };
 

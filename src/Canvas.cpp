@@ -13,6 +13,7 @@ Canvas::Canvas(std::shared_ptr<LayersManager> manager, QWidget *parent)
     setWindowTitle("PVD");
     setAttribute(Qt::WA_NoBackground);
     setStyleSheet("background-color:black;");
+    setFocusPolicy(Qt::StrongFocus);
 
     QTimer *timer = new QTimer;
 
@@ -39,6 +40,34 @@ void Canvas::resizeEvent(QResizeEvent *event)
     m_base.fill(Qt::black);
 
     updateView();
+}
+void Canvas::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key())
+    {
+    case Qt::Key::Key_Up:
+        scroll(QPoint(0, 20));
+        break;
+    case Qt::Key::Key_Down:
+        scroll(QPoint(0, -20));
+        break;
+    case Qt::Key::Key_Left:
+        scroll(QPoint(20, 0));
+        break;
+    case Qt::Key::Key_Right:
+        scroll(QPoint(-20, 0));
+        break;
+    default:
+        QWidget::keyPressEvent(event);
+        break;
+    }
+}
+
+void Canvas::scroll(QPoint point)
+{
+    manager->setOrigin(point);
+    updateView();
+    repaint();
 }
 
 void Canvas::updateView()

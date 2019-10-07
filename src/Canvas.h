@@ -16,6 +16,11 @@ public:
     void paintEvent(QPaintEvent *) override;
     void resizeEvent(QResizeEvent *event) override;
 
+    void keyPressEvent(QKeyEvent *event) override;
+
+private:
+    void scroll (QPoint point);
+
 private:
     void updateView();
 private:

@@ -16,6 +16,7 @@ public:
     void drawPixmap(QPainter &painter, QPoint center);
     void setSize(QSize size) override;
     void setScale() override;
+    void setOrigin(QPointF origin) override;
 
     QPixmap & pixmap() override {}
 

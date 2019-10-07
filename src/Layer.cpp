@@ -1,4 +1,5 @@
 #include "Layer.h"
+#include <QDebug>
 
 void Layer::setScale()
 {
@@ -13,7 +14,14 @@ void Layer::setSize(QSize size)
     m_current.fill(Qt::transparent);
     m_cashed = newSizePixmap;
     m_cashed.fill(Qt::transparent);
-//    widgetToSceneTranslator = makeTranslator();
+    //    widgetToSceneTranslator = makeTranslator();
+}
+
+void Layer::setOrigin(QPointF origin)
+{
+    this->origin += origin;
+
+    draw();
 }
 
 QPixmap &Layer::pixmap()

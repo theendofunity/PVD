@@ -13,6 +13,7 @@ public:
 
     virtual void setScale() override;
     virtual void setSize(QSize size) override;
+    virtual void setOrigin(QPointF origin) override;
 
     QPixmap& pixmap() override;
 
@@ -24,7 +25,7 @@ protected:
     QPixmap m_cashed;
 
     QPointF origin = QPointF();
-    QSize size = QSize(1000,1000);
+    QSize size;
     double scale = 1.0;
 
 };

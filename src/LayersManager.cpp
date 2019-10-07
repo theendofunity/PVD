@@ -40,3 +40,11 @@ void LayersManager::setScale()
 {
 
 }
+
+void LayersManager::setOrigin(QPointF origin)
+{
+    for (auto &layer : layers)
+    {
+        layer->setOrigin(origin);
+    }
+}
