@@ -26,7 +26,6 @@ void Canvas::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    painter.setBackground(QBrush(Qt::black));
     painter.drawPixmap(center, m_base);
 
     manager->drawPixmap(painter, center);
@@ -57,6 +56,12 @@ void Canvas::keyPressEvent(QKeyEvent *event)
     case Qt::Key::Key_Right:
         scroll(QPoint(-20, 0));
         break;
+    case Qt::Key::Key_Plus:
+        scale(0.2);
+        break;
+    case Qt::Key::Key_Minus:
+        scale(-0.2);
+        break;
     default:
         QWidget::keyPressEvent(event);
         break;
@@ -66,6 +71,13 @@ void Canvas::keyPressEvent(QKeyEvent *event)
 void Canvas::scroll(QPoint point)
 {
     manager->setOrigin(point);
+    updateView();
+    repaint();
+}
+
+void Canvas::scale(qreal scale)
+{
+    manager->setScale(scale);
     updateView();
     repaint();
 }

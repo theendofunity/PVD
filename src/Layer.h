@@ -11,7 +11,7 @@ class Layer : public ILayer
 public:
     virtual void draw() override = 0 ;
 
-    virtual void setScale() override;
+    virtual void setScale(qreal scale) override;
     virtual void setSize(QSize size) override;
     virtual void setOrigin(QPointF origin) override;
 
@@ -26,7 +26,7 @@ protected:
 
     QPointF origin = QPointF();
     QSize size;
-    double scale = 1.0;
+    qreal scale = 1.0;
 
 };
 

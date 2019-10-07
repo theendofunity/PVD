@@ -20,6 +20,7 @@ public:
 
 private:
     void scroll (QPoint point);
+    void scale(qreal scale);
 
 private:
     void updateView();

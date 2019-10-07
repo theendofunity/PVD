@@ -36,9 +36,12 @@ void LayersManager::setSize(QSize size)
     }
 }
 
-void LayersManager::setScale()
+void LayersManager::setScale(qreal scale)
 {
-
+    for (auto &layer : layers)
+    {
+        layer->setScale(scale);
+    }
 }
 
 void LayersManager::setOrigin(QPointF origin)
