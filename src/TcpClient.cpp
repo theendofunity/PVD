@@ -7,6 +7,7 @@
 #include <libs/AtcrbsCoordinatePoint.h>
 #include <libs/PeriodRepetitionAzimuth.h>
 #include <libs/POIProtocol.h>
+#include <libs/Azimuth.h>
 
 #include <memory>
 
@@ -49,7 +50,7 @@ void TcpClient::onMessage()
     {
         dsp::PeriodRepetitionAzimuth az;
         stream >> az;
-        AzimuthDistributor::notifyConsumers(std::make_shared<dsp::PeriodRepetitionAzimuth>(az));
+        AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth.value())));
     }
 
     if (header.type == 91)

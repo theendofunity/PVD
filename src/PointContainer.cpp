@@ -33,10 +33,9 @@ void PointContainer::addCp(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message)
 //    qDebug() << message->azimuth << pointAzimuth.toDegrees() << currentSector(pointAzimuth);
 }
 
-void PointContainer::setAzimuth(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message)
+void PointContainer::setAzimuth(std::shared_ptr<Azimuth> &azimuth)
 {
-    auto azimuth = Azimuth::fromDegrees(message->azimuth.value());
-    auto nextAzimuth = nextSector(azimuth);
+    auto nextAzimuth = nextSector(*azimuth.get());
 
 //    qDebug() <<  "NextAzimuth: " << nextAzimuth;
     removeOldItems(nextAzimuth);

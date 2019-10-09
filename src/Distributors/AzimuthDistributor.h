@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "AzimuthConsumer.h"
-#include "libs/PeriodRepetitionAzimuth.h"
+#include "libs/Azimuth.h"
 
 
 //Паттерн наблюдатель
@@ -18,7 +18,7 @@ public:
     //Добавление потребителя
     void addConsumer(AzimuthConsumer *consumer);
     //Уведомление потребителя
-    void notifyConsumers(std::shared_ptr<dsp::PeriodRepetitionAzimuth> message);
+    void notifyConsumers(std::shared_ptr<Azimuth> message);
 
 private:
     QList <AzimuthConsumer*> consumers;

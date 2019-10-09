@@ -10,6 +10,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+
     points = std::make_shared<PointContainer>();
 
     tcpClient = new TcpClient;
@@ -21,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     pvd = new PVDSystem;
 
     createMainWindow();
+
+    pvd->associateWith(static_cast<AzimuthDistributor*>(tcpClient));
 
     showMaximized();
 }
@@ -34,6 +37,7 @@ MainWindow::~MainWindow()
 void MainWindow::createMainWindow()
 {
     QWidget* mainWidget = new QWidget(this);
+    mainWidget->setMinimumSize(500, 500);
     setCentralWidget(mainWidget);
 
     QHBoxLayout *mainLayout = new QHBoxLayout(mainWidget);

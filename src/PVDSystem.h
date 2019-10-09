@@ -4,9 +4,12 @@
 #include <memory>
 
 #include "GridLayer.h"
+#include "AzimuthLayer.h"
 
 class Canvas;
 class LayersManager;
+
+class AzimuthDistributor;
 
 class PVDSystem
 {
@@ -14,6 +17,7 @@ public:
     PVDSystem();
 
     Canvas *getCanvas() const;
+    void associateWith(AzimuthDistributor* distr);
 
 private:
     void createLayers();
@@ -23,6 +27,7 @@ private:
     std::shared_ptr<LayersManager> manager = nullptr;
 
     std::unique_ptr<GridLayer> gridLayer = nullptr;
+    std::unique_ptr<AzimuthLayer> azimuthLayer = nullptr;
 
 };
 

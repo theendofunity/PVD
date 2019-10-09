@@ -29,6 +29,7 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/
 INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
+        src/AzimuthLayer.cpp \
         src/Layer.cpp \
         libs/Azimuth.cpp \
         src/Canvas.cpp \
@@ -44,6 +45,7 @@ SOURCES += \
         src/TcpClient.cpp
 
 HEADERS += \
+        src/AzimuthLayer.h \
         src/Layer.h \
         libs/Azimuth.h \
         src/Canvas.h \
