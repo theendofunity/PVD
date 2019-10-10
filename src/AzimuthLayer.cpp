@@ -22,6 +22,7 @@ void AzimuthLayer::draw()
 
     QPointF point2(lineSize * std::cos(azimuth),
                    lineSize * std::sin(azimuth));
+    point2 *= scale;
     painter.drawLine({0, 0}, point2);
 
     m_cashed = std::move(m_current);

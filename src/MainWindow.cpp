@@ -37,7 +37,6 @@ MainWindow::~MainWindow()
 void MainWindow::createMainWindow()
 {
     QWidget* mainWidget = new QWidget(this);
-    mainWidget->setMinimumSize(500, 500);
     setCentralWidget(mainWidget);
 
     QHBoxLayout *mainLayout = new QHBoxLayout(mainWidget);
