@@ -13,7 +13,7 @@ void CoordinatePointDistributor::addConsumer(CoordinatePointConsumer *consumer)
     qDebug() << consumers.size();
 }
 
-void CoordinatePointDistributor::notifyConsumers(std::shared_ptr<pdp::AtcrbsCoordinatePoint> message)
+void CoordinatePointDistributor::notifyConsumers(std::shared_ptr<pvd::CoordinatePoint> message)
 {
     for(auto &consumer : consumers)
     {

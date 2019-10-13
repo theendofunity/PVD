@@ -41,10 +41,12 @@ SOURCES += \
         src/MainWindow.cpp \
         src/PVDSystem.cpp \
         src/PointContainer.cpp \
+        src/PointLayer.cpp \
         src/main.cpp \
         src/TcpClient.cpp
 
 HEADERS += \
+        libs/CoordinatePoint.h \
         src/AzimuthLayer.h \
         src/Layer.h \
         libs/Azimuth.h \
@@ -66,6 +68,7 @@ HEADERS += \
         src/MainWindow.h \
         src/PVDSystem.h \
         src/PointContainer.h \
+        src/PointLayer.h \
         src/TcpClient.h
 
 # Default rules for deployment.

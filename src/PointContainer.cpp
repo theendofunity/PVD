@@ -22,7 +22,7 @@ PointContainer::PointContainer()
 
 }
 
-void PointContainer::addCp(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message)
+void PointContainer::addCp(std::shared_ptr<pvd::CoordinatePoint> &message)
 {
     auto cp = std::make_shared<CoordinatePoint>(message);
 

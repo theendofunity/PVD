@@ -21,13 +21,13 @@ protected:
     void initPainter(QPainter &painter);
 
 protected:
-    QPixmap m_current;
-    QPixmap m_cashed;
+    QPixmap m_current; //Текущее, используется во время отрисовки
+    QPixmap m_cashed; //После окончания отрисовки перемещается сюда,
+    // и рисуется при вызове paintEvent
 
-    QPointF origin = QPointF();
+    QPointF origin = QPointF(); //Центр
     QSize size;
     qreal scale = 1.0;
-
 };
 
 #endif // LAYER_H

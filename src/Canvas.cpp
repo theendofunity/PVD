@@ -19,7 +19,7 @@ Canvas::Canvas(std::shared_ptr<LayersManager> manager, QWidget *parent)
 
     //Обновление отображения
     QObject::connect(timer, &QTimer::timeout, this, &Canvas::updateView);
-    timer->start(100);
+    timer->start(50);
 }
 
 void Canvas::paintEvent(QPaintEvent *)

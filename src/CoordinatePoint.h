@@ -6,23 +6,28 @@
 
 #include "IItem.h"
 
-namespace pdp
+namespace pvd
 {
-    class AtcrbsCoordinatePoint;
+    class CoordinatePoint;
 }
 
 class CoordinatePoint : public IItem
 {
 public:
-    CoordinatePoint(std::shared_ptr<pdp::AtcrbsCoordinatePoint> cp);
+    CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp);
 
-    void draw(QPainter *painter) override;
+    void draw(QPainter &painter) override;
 
 private:
     uint8_t boardNumber;
     double azimuth = 0; //rad
     double altitude = 0;
     double range = 0;
+
+    QPointF center;
+
+    QColor color = Qt::blue;
+    QSize size;
 };
 
 #endif // COORDINATEPOINT_H
