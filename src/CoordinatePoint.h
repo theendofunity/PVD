@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "IItem.h"
+#include "Label.h"
 
 namespace pvd
 {
@@ -15,8 +16,11 @@ class CoordinatePoint : public IItem
 {
 public:
     CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp);
+    ~CoordinatePoint() override;
 
     void draw(QPainter &painter, double scale) override;
+
+    Label *getLabel() const;
 
 private:
     uint8_t boardNumber;
@@ -28,6 +32,8 @@ private:
 
     QColor color = Qt::blue;
     QSize size;
+
+    Label* label = nullptr;
 };
 
 #endif // COORDINATEPOINT_H

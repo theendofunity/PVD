@@ -12,6 +12,13 @@ CoordinatePoint::CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp)
 
     size = QSize(10, 10);
     center = QPointF(std::sin(azimuth), -std::cos(azimuth)) * range / 1000;
+
+    label = new Label(cp);
+}
+
+CoordinatePoint::~CoordinatePoint()
+{
+    delete label;
 }
 
 void CoordinatePoint::draw(QPainter &painter, double scale)
@@ -21,4 +28,9 @@ void CoordinatePoint::draw(QPainter &painter, double scale)
     QRectF rec(QPointF(), size);
     rec.moveCenter(center * scale);
     painter.drawEllipse(rec);
+}
+
+Label *CoordinatePoint::getLabel() const
+{
+    return label;
 }

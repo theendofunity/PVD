@@ -49,4 +49,7 @@ void PVDSystem::createLayers()
 
     pointLayer = std::make_unique<PointLayer>(points);
     manager->addLayer(pointLayer.get());
+
+    labelLayer = std::make_unique<LabelLayer>(points);
+    manager->addLayer(labelLayer.get());
 }

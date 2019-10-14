@@ -6,6 +6,7 @@
 #include "GridLayer.h"
 #include "AzimuthLayer.h"
 #include "PointLayer.h"
+#include "LabelLayer.h"
 
 class Canvas;
 class LayersManager;
@@ -34,6 +35,7 @@ private:
     std::unique_ptr<GridLayer> gridLayer = nullptr;
     std::unique_ptr<AzimuthLayer> azimuthLayer = nullptr;
     std::unique_ptr<PointLayer> pointLayer = nullptr;
+    std::unique_ptr<LabelLayer> labelLayer = nullptr;
 
 };
 

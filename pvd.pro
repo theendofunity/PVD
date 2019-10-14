@@ -30,6 +30,8 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
         src/AzimuthLayer.cpp \
+        src/Label.cpp \
+        src/LabelLayer.cpp \
         src/Layer.cpp \
         libs/Azimuth.cpp \
         src/Canvas.cpp \
@@ -48,6 +50,8 @@ SOURCES += \
 HEADERS += \
         libs/CoordinatePoint.h \
         src/AzimuthLayer.h \
+        src/Label.h \
+        src/LabelLayer.h \
         src/Layer.h \
         libs/Azimuth.h \
         src/Canvas.h \
