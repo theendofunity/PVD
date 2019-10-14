@@ -16,7 +16,7 @@ class CoordinatePoint : public IItem
 public:
     CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp);
 
-    void draw(QPainter &painter) override;
+    void draw(QPainter &painter, double scale) override;
 
 private:
     uint8_t boardNumber;

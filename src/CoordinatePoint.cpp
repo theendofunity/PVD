@@ -11,16 +11,14 @@ CoordinatePoint::CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp)
     boardNumber = static_cast<uint8_t>(cp->bortNumber);
 
     size = QSize(10, 10);
-    center = QPointF(std::cos(azimuth), -std::cos(azimuth)) * range / 1000;
-
-    qDebug() << azimuth << range;
+    center = QPointF(std::sin(azimuth), -std::cos(azimuth)) * range / 1000;
 }
 
-void CoordinatePoint::draw(QPainter &painter)
+void CoordinatePoint::draw(QPainter &painter, double scale)
 {
     painter.setPen(color);
 
     QRectF rec(QPointF(), size);
-    rec.moveCenter(center);
+    rec.moveCenter(center * scale);
     painter.drawEllipse(rec);
 }

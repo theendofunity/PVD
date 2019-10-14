@@ -38,7 +38,7 @@ void TcpClient::onMessage()
     std::vector<uint8_t> m_buffer;
 
     m_buffer.assign(data.begin(), data.end());
-    qDebug() << m_buffer.size();
+
 //    auto convertedData = static_cast<const uint8_t*>(static_cast<const void *>(data.data())); //Мутный каст (скопирован из pdp), нужно исправить
 //    m_buffer.insert(m_buffer.end(), convertedData, convertedData + data.size());
 
@@ -46,7 +46,6 @@ void TcpClient::onMessage()
 
     PVD::Header header;
     stream >> header;
-//    qDebug() << "Type" << header.type;
 
     if (header.type == 350)
     {

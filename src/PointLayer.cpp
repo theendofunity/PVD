@@ -20,7 +20,7 @@ void PointLayer::draw()
 
     for (auto &item : container->data())
     {
-        item->draw(painter);
+        item->draw(painter, scale);
     }
 
     m_cashed = std::move(m_current);

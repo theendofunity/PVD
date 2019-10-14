@@ -27,17 +27,13 @@ void PointContainer::addCp(std::shared_ptr<pvd::CoordinatePoint> &message)
     auto cp = std::make_shared<CoordinatePoint>(message);
 
     auto pointAzimuth = Azimuth::fromRadians(message->azimuth);
-
     points[currentSector(pointAzimuth)].push_back(cp);
-
-//    qDebug() << message->azimuth << pointAzimuth.toDegrees() << currentSector(pointAzimuth);
 }
 
 void PointContainer::setAzimuth(std::shared_ptr<Azimuth> &azimuth)
 {
     auto nextAzimuth = nextSector(*azimuth.get());
 
-//    qDebug() <<  "NextAzimuth: " << nextAzimuth;
     removeOldItems(nextAzimuth);
 }
 
