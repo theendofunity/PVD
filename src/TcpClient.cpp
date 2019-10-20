@@ -7,6 +7,8 @@
 #include <libs/AtcrbsCoordinatePoint.h>
 #include <libs/PeriodRepetitionAzimuth.h>
 #include <libs/POIProtocol.h>
+#include <libs/Azimuth.h>
+#include <libs/CoordinatePoint.h>
 
 #include <memory>
 
@@ -36,6 +38,7 @@ void TcpClient::onMessage()
     std::vector<uint8_t> m_buffer;
 
     m_buffer.assign(data.begin(), data.end());
+
 //    auto convertedData = static_cast<const uint8_t*>(static_cast<const void *>(data.data())); //Мутный каст (скопирован из pdp), нужно исправить
 //    m_buffer.insert(m_buffer.end(), convertedData, convertedData + data.size());
 
@@ -43,20 +46,19 @@ void TcpClient::onMessage()
 
     PVD::Header header;
     stream >> header;
-//    qDebug() << "Type" << header.type;
 
-    if (header.type == 25)
+    if (header.type == 350)
     {
         dsp::PeriodRepetitionAzimuth az;
         stream >> az;
-        AzimuthDistributor::notifyConsumers(std::make_shared<dsp::PeriodRepetitionAzimuth>(az));
+        AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth.value())));
     }
 
-    if (header.type == 91)
+    if (header.type == 391)
     {
-        pdp::AtcrbsCoordinatePoint cp;
+        pvd::CoordinatePoint cp;
         stream >> cp;
-        CoordinatePointDistributor::notifyConsumers(std::make_shared<pdp::AtcrbsCoordinatePoint>(cp));
+        CoordinatePointDistributor::notifyConsumers(std::make_shared<pvd::CoordinatePoint>(cp));
     }
 }
 

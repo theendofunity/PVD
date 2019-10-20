@@ -19,7 +19,7 @@ Canvas::Canvas(std::shared_ptr<LayersManager> manager, QWidget *parent)
 
     //Обновление отображения
     QObject::connect(timer, &QTimer::timeout, this, &Canvas::updateView);
-    timer->start(1000);
+    timer->start(50);
 }
 
 void Canvas::paintEvent(QPaintEvent *)
@@ -72,17 +72,16 @@ void Canvas::scroll(QPoint point)
 {
     manager->setOrigin(point);
     updateView();
-    repaint();
 }
 
 void Canvas::scale(qreal scale)
 {
     manager->setScale(scale);
     updateView();
-    repaint();
 }
 
 void Canvas::updateView()
 {
     manager->draw();
+    repaint();
 }

@@ -21,7 +21,6 @@ private:
     void createMainWindow();
 
 private:
-    std::shared_ptr<PointContainer> points = nullptr;
     TcpClient *tcpClient = nullptr;
 
     PVDSystem *pvd = nullptr;

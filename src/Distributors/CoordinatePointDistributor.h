@@ -5,6 +5,7 @@
 #include <QList>
 
 #include <libs/AtcrbsCoordinatePoint.h>
+#include "libs/CoordinatePoint.h"
 
 #include "CoordinatePointConsumer.h"
 
@@ -14,7 +15,7 @@ public:
     CoordinatePointDistributor();
 
     void addConsumer(CoordinatePointConsumer* consumer);
-    void notifyConsumers(std::shared_ptr<pdp::AtcrbsCoordinatePoint> message);
+    void notifyConsumers(std::shared_ptr<pvd::CoordinatePoint> message);
 
 private:
     QList<CoordinatePointConsumer*> consumers;

@@ -51,3 +51,7 @@ void LayersManager::setOrigin(QPointF origin)
         layer->setOrigin(origin);
     }
 }
+
+QPixmap &LayersManager::pixmap()
+{
+}

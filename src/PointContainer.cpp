@@ -22,23 +22,18 @@ PointContainer::PointContainer()
 
 }
 
-void PointContainer::addCp(std::shared_ptr<pdp::AtcrbsCoordinatePoint> &message)
+void PointContainer::addCp(std::shared_ptr<pvd::CoordinatePoint> &message)
 {
     auto cp = std::make_shared<CoordinatePoint>(message);
 
     auto pointAzimuth = Azimuth::fromRadians(message->azimuth);
-
     points[currentSector(pointAzimuth)].push_back(cp);
-
-//    qDebug() << message->azimuth << pointAzimuth.toDegrees() << currentSector(pointAzimuth);
 }
 
-void PointContainer::setAzimuth(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message)
+void PointContainer::setAzimuth(std::shared_ptr<Azimuth> &azimuth)
 {
-    auto azimuth = Azimuth::fromDegrees(message->azimuth.value());
-    auto nextAzimuth = nextSector(azimuth);
+    auto nextAzimuth = nextSector(*azimuth.get());
 
-//    qDebug() <<  "NextAzimuth: " << nextAzimuth;
     removeOldItems(nextAzimuth);
 }
 
@@ -58,5 +53,6 @@ QList<std::shared_ptr<CoordinatePoint> > PointContainer::data()
 
 void PointContainer::removeOldItems(uint8_t sector)
 {
-   points[sector].clear();
+    if (!points[sector].isEmpty())
+        points[sector].clear();
 }

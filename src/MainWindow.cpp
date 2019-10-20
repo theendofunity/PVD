@@ -10,17 +10,14 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    points = std::make_shared<PointContainer>();
+    tcpClient = new TcpClient(this);
 
-    tcpClient = new TcpClient;
-
-    //Подписка на сообщения
-    static_cast<CoordinatePointDistributor*>(tcpClient)->addConsumer(points.get());
-    static_cast<AzimuthDistributor*>(tcpClient)->addConsumer(points.get());
-
-    pvd = new PVDSystem;
+    pvd = new PVDSystem();
 
     createMainWindow();
+
+    pvd->associateWith(static_cast<AzimuthDistributor*>(tcpClient));
+    pvd->associateWith(static_cast<CoordinatePointDistributor*>(tcpClient));
 
     showMaximized();
 }

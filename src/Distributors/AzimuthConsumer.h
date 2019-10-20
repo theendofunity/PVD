@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "libs/PeriodRepetitionAzimuth.h"
+#include "libs/Azimuth.h"
 
 //Потребитель
 
@@ -12,7 +12,7 @@ class AzimuthConsumer
 public:
     virtual ~AzimuthConsumer() = default;
 
-    virtual void setAzimuth(std::shared_ptr<dsp::PeriodRepetitionAzimuth> &message) = 0;
+    virtual void setAzimuth(std::shared_ptr<Azimuth> &message) = 0;
 };
 
 #endif // AZIMUTHCONSUMER_H

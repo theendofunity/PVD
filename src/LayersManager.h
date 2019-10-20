@@ -18,7 +18,7 @@ public:
     void setScale(qreal scale) override;
     void setOrigin(QPointF origin) override;
 
-    QPixmap & pixmap() override {}
+    QPixmap & pixmap() override;
 
 private:
     QList<ILayer*> layers;
