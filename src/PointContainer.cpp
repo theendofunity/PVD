@@ -53,5 +53,6 @@ QList<std::shared_ptr<CoordinatePoint> > PointContainer::data()
 
 void PointContainer::removeOldItems(uint8_t sector)
 {
-   points[sector].clear();
+    if (!points[sector].isEmpty())
+        points[sector].clear();
 }
