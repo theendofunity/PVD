@@ -5,22 +5,19 @@
 
 #include <memory>
 
-namespace pvd
-{
-class CoordinatePoint;
-}
+class CpMessage;
 
 class Label : public IItem
 {
 public:
-    Label(std::shared_ptr<pvd::CoordinatePoint>);
+    Label(std::shared_ptr<CpMessage>);
 
     void draw(QPainter &painter, double scale) override;
     void calcPosition();
     void createTitle();
 
 private:
-    std::shared_ptr<pvd::CoordinatePoint> cp;
+    std::shared_ptr<CpMessage> cp;
 
     double x;
     double y;

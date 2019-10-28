@@ -14,7 +14,7 @@ class PointContainer : public CoordinatePointConsumer
 {
 public:
     PointContainer();
-    void addCp(std::shared_ptr<pvd::CoordinatePoint> &message) override;
+    void addCp(std::shared_ptr<CpMessage> &message) override;
     void setAzimuth(std::shared_ptr<Azimuth> &azimuth) override;
     QList<std::shared_ptr<CoordinatePoint>> data();
 private:
