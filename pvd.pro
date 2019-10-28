@@ -29,6 +29,7 @@ INCLUDEPATH += $${PROJECT_ROOT}/libs/
 
 SOURCES += \
         src/AzimuthLayer.cpp \
+        src/DataAccumulator.cpp \
         src/Label.cpp \
         src/LabelLayer.cpp \
         src/Layer.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
         libs/CpMessage.h \
         libs/HeaderMessage.h \
         src/AzimuthLayer.h \
+        src/DataAccumulator.h \
         src/Label.h \
         src/LabelLayer.h \
         src/Layer.h \

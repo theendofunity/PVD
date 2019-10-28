@@ -35,24 +35,28 @@ void TcpClient::onMessage()
 {
     auto data = m_socket->readAll();
 
+    accumulator.setData(data);
+
     QDataStream stream(data);
 
     HeaderMessage header;
-    stream >> header;
 
-    if (header.type == 350)
+    while(accumulator.getFrame(stream, header))
     {
-        AzimuthMessage az;
-        stream >> az;
-        qDebug() << az.azimuth;
-        AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth)));
-    }
 
-    if (header.type == 391)
-    {
-        CpMessage cp;
-        stream >> cp;
-        CoordinatePointDistributor::notifyConsumers(std::make_shared<CpMessage>(cp));
+        if (header.type == 350)
+        {
+            AzimuthMessage az;
+            stream >> az;
+            AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth)));
+        }
+
+        if (header.type == 391)
+        {
+            CpMessage cp;
+            stream >> cp;
+            CoordinatePointDistributor::notifyConsumers(std::make_shared<CpMessage>(cp));
+        }
     }
 }
 
