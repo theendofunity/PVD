@@ -3,12 +3,12 @@
 #include <QDebug>
 #include <QDataStream>
 #include <QHostAddress>
-#include <libs/GenericPrototypes/BitStream.h>
-#include <libs/AtcrbsCoordinatePoint.h>
-#include <libs/PeriodRepetitionAzimuth.h>
-#include <libs/POIProtocol.h>
+
 #include <libs/Azimuth.h>
-#include <libs/CoordinatePoint.h>
+
+#include "libs/HeaderMessage.h"
+#include "libs/CpMessage.h"
+#include "libs/AzimuthMessage.h"
 
 #include <memory>
 
@@ -35,30 +35,27 @@ void TcpClient::onMessage()
 {
     auto data = m_socket->readAll();
 
-    std::vector<uint8_t> m_buffer;
+    accumulator.setData(data);
 
-    m_buffer.assign(data.begin(), data.end());
+    QDataStream stream(data);
 
-//    auto convertedData = static_cast<const uint8_t*>(static_cast<const void *>(data.data())); //Мутный каст (скопирован из pdp), нужно исправить
-//    m_buffer.insert(m_buffer.end(), convertedData, convertedData + data.size());
+    HeaderMessage header;
 
-    BitStream stream(m_buffer); //Возможно стоит отказаться и написать свой вариант (упрощенный)
-
-    PVD::Header header;
-    stream >> header;
-
-    if (header.type == 350)
+    while(accumulator.getFrame(stream, header))
     {
-        dsp::PeriodRepetitionAzimuth az;
-        stream >> az;
-        AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth.value())));
-    }
+        if (header.type == 350)
+        {
+            AzimuthMessage az;
+            stream >> az;
+            AzimuthDistributor::notifyConsumers(std::make_shared<Azimuth>(Azimuth::fromDegrees(az.azimuth)));
+        }
 
-    if (header.type == 391)
-    {
-        pvd::CoordinatePoint cp;
-        stream >> cp;
-        CoordinatePointDistributor::notifyConsumers(std::make_shared<pvd::CoordinatePoint>(cp));
+        if (header.type == 391)
+        {
+            CpMessage cp;
+            stream >> cp;
+            CoordinatePointDistributor::notifyConsumers(std::make_shared<CpMessage>(cp));
+        }
     }
 }
 

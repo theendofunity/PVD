@@ -3,8 +3,6 @@
 #include "libs/Azimuth.h"
 #include "CoordinatePoint.h"
 
-#include <QDebug>
-
 //-----------------------------------------------------------------------
 
 static uint8_t currentSector(Azimuth &azimuth)
@@ -22,7 +20,7 @@ PointContainer::PointContainer()
 
 }
 
-void PointContainer::addCp(std::shared_ptr<pvd::CoordinatePoint> &message)
+void PointContainer::addCp(std::shared_ptr<CpMessage> &message)
 {
     auto cp = std::make_shared<CoordinatePoint>(message);
 

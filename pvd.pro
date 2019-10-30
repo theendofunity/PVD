@@ -26,10 +26,10 @@ CONFIG += c++14
 INCLUDEPATH += $${PROJECT_ROOT}/src
 INCLUDEPATH += $${PROJECT_ROOT}/src/Distributors
 INCLUDEPATH += $${PROJECT_ROOT}/libs/
-INCLUDEPATH += $${PROJECT_ROOT}/libs/GenericPrototypes
 
 SOURCES += \
         src/AzimuthLayer.cpp \
+        src/DataAccumulator.cpp \
         src/Label.cpp \
         src/LabelLayer.cpp \
         src/Layer.cpp \
@@ -48,8 +48,11 @@ SOURCES += \
         src/TcpClient.cpp
 
 HEADERS += \
-        libs/CoordinatePoint.h \
+        libs/AzimuthMessage.h \
+        libs/CpMessage.h \
+        libs/HeaderMessage.h \
         src/AzimuthLayer.h \
+        src/DataAccumulator.h \
         src/Label.h \
         src/LabelLayer.h \
         src/Layer.h \
@@ -61,10 +64,6 @@ HEADERS += \
         src/Distributors/CoordinatePointConsumer.h \
         src/Distributors/CoordinatePointDistributor.h \
         src/Distributors/IDistributor.h \
-        libs/AtcrbsCoordinatePoint.h \
-        libs/Answer.h \
-        libs/POIProtocol.h  \
-        libs/PeriodRepetitionAzimuth.h  \
         src/GridLayer.h \
         src/IItem.h \
         src/ILayer.h \

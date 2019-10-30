@@ -1,21 +1,17 @@
 #ifndef COORDINATEPOINT_H
 #define COORDINATEPOINT_H
 
-#include <QString>
 #include <memory>
 
 #include "IItem.h"
 #include "Label.h"
 
-namespace pvd
-{
-    class CoordinatePoint;
-}
+class CpMessage;
 
 class CoordinatePoint : public IItem
 {
 public:
-    CoordinatePoint(std::shared_ptr<pvd::CoordinatePoint> cp);
+    CoordinatePoint(std::shared_ptr<CpMessage> cp);
     ~CoordinatePoint() override;
 
     void draw(QPainter &painter, double scale) override;
@@ -23,10 +19,6 @@ public:
     Label *getLabel() const;
 
 private:
-    uint8_t boardNumber;
-    double azimuth = 0; //rad
-    double altitude = 0;
-    double range = 0;
 
     QPointF center;
 

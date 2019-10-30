@@ -2,9 +2,9 @@
 
 #include <cmath>
 
-#include <libs/CoordinatePoint.h>
+#include <libs/CpMessage.h>
 
-Label::Label(std::shared_ptr<pvd::CoordinatePoint> cp)
+Label::Label(std::shared_ptr<CpMessage> cp)
     :cp(cp)
 {
     calcPosition();

@@ -1,7 +1,5 @@
 #include "AzimuthLayer.h"
 
-#include <QDebug>
-
 AzimuthLayer::AzimuthLayer()
 {
     pen.setWidth(3);
@@ -17,7 +15,6 @@ void AzimuthLayer::draw()
     QPainter painter(&m_current);
     initPainter(painter);
 
-//    painter.translate(-origin * scale);
     painter.setPen(pen);
 
     QPointF point2(lineSize * std::cos(azimuth),
