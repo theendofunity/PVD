@@ -1,7 +1,6 @@
 #ifndef COORDINATEPOINT_H
 #define COORDINATEPOINT_H
 
-#include <QString>
 #include <memory>
 
 #include "IItem.h"

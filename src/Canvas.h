@@ -5,7 +5,6 @@
 
 #include <memory>
 
-
 class LayersManager;
 
 class Canvas : public QWidget

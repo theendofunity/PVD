@@ -28,7 +28,7 @@ private:
 
     QTcpSocket *m_socket = nullptr;
     const uint16_t port = 10800;
-    QString host = "192.168.0.101";
+    QString host = "192.168.0.109";
 };
 
 #endif // TCPCLIENT_H

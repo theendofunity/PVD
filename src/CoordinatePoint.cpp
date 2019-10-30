@@ -3,8 +3,6 @@
 
 #include <math.h>
 
-#include <QDebug>
-
 CoordinatePoint::CoordinatePoint(std::shared_ptr<CpMessage> cp)
 {
     size = QSize(10, 10);
@@ -20,7 +18,7 @@ CoordinatePoint::~CoordinatePoint()
 
 void CoordinatePoint::draw(QPainter &painter, double scale)
 {
-    painter.setPen(color);
+    painter.setBrush(color);
 
     QRectF rec(QPointF(), size);
     rec.moveCenter(center * scale);

@@ -43,7 +43,6 @@ void TcpClient::onMessage()
 
     while(accumulator.getFrame(stream, header))
     {
-
         if (header.type == 350)
         {
             AzimuthMessage az;
