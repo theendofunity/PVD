@@ -30,13 +30,12 @@ Canvas *PVDSystem::getCanvas() const
 void PVDSystem::associateWith(AzimuthDistributor *distr)
 {
     distr->addConsumer(azimuthLayer.get());
-    static_cast<AzimuthDistributor*>(distr)->addConsumer(points.get());
-    static_cast<AzimuthDistributor*>(distr)->addConsumer(points.get());
+    distr->addConsumer(points.get());
 }
 
 void PVDSystem::associateWith(CoordinatePointDistributor *distr)
 {
-    static_cast<CoordinatePointDistributor*>(distr)->addConsumer(points.get());
+    distr->addConsumer(points.get());
 }
 
 void PVDSystem::createLayers()

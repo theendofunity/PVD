@@ -11,19 +11,19 @@ DataAccumulator::DataAccumulator()
 
 void DataAccumulator::setData(QByteArray &data)
 {
-    frame.insert(frame.end(), data.begin(), data.end());
+    buffer.insert(buffer.end(), data.begin(), data.end());
 }
 
 bool DataAccumulator::getFrame(QDataStream &stream, HeaderMessage &header)
 {
-    if (frame.size() < 4)
+    if (buffer.size() < 4)
         return false;
 
     stream >> header;
 
-    if (frame.size() < header.size)
+    if (buffer.size() < header.size)
         return false;
 
-    frame.erase(frame.begin(), frame.begin() + header.size);
+    buffer.erase(buffer.begin(), buffer.begin() + header.size);
     return true;
 }
