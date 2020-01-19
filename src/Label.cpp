@@ -38,5 +38,5 @@ void Label::createTitle()
     title << QString::number(cp->bortNumber)
           << QString::number(cp->azimuth) + " rad"
           << QString::number(cp->range) + " m"
-          << QString::number(cp->height) + " m";
+          << QString::number(cp->height) + " km";
 }

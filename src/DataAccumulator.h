@@ -15,9 +15,8 @@ public:
 
     bool getFrame(QDataStream &stream, HeaderMessage &header);
 private:
-    QByteArray buffer;
 
-    std::vector<uint8_t> frame;
+    std::vector<uint8_t> buffer;
 };
 
 #endif // DATAACCUMULATOR_H

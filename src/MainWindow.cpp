@@ -10,14 +10,16 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    setMinimumSize(500, 500);
+
     tcpClient = new TcpClient(this);
 
     pvd = new PVDSystem();
 
     createMainWindow();
 
-    pvd->associateWith(static_cast<AzimuthDistributor*>(tcpClient));
-    pvd->associateWith(static_cast<CoordinatePointDistributor*>(tcpClient));
+    pvd->associateWith(dynamic_cast<AzimuthDistributor*>(tcpClient));
+    pvd->associateWith(dynamic_cast<CoordinatePointDistributor*>(tcpClient));
 
     showMaximized();
 }
